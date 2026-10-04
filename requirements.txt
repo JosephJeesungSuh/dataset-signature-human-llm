@@ -1,0 +1,20 @@
+# Curation, embeddings and probes, annotation, conversation clients, evaluation (Python 3.12).
+# Install the PyTorch build that matches your CUDA runtime.
+torch==2.10.0
+transformers==5.13.0
+datasets==5.0.0
+huggingface-hub>=1.0,<2
+numpy==2.4.6
+scipy==1.18.0
+scikit-learn==1.9.0
+pyarrow>=21
+fasttext-wheel==0.9.2
+tiktoken>=0.8,<1
+openai==2.44.0
+httpx>=0.28,<1
+PyYAML>=6,<7
+tqdm>=4.67,<5
+sentencepiece>=0.2,<1
+protobuf>=4
+# Serving models for intents and simulated conversations: vLLM, in its own environment.
+# Taxonomy annotation: the AI Observatory package (naturalistic_ai), installed separately.
