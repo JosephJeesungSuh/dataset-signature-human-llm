@@ -1,18 +1,28 @@
 # Dataset Signatures in Human-LLM Interactions and User Modeling
 
-Code for the paper *Dataset Signatures in Human-LLM Interactions and User Modeling* (Joseph Suh and
-Serina Chang). It covers:
+<!--- BADGES: START --->
+[![Arxiv](https://img.shields.io/badge/arXiv-2610.05534-B31B1B.svg)][#arxiv-paper-package]
+[![Github License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)][#license-gh-package]
 
-- **Dataset classification** (Sec. 2): identifying which of seven human–LLM conversation datasets a
-  conversation comes from, using linear probes on frozen language-model representations.
-- **Taxonomy matching** (Sec. 2.3): testing how much of that separability human-designed taxonomies
-  explain.
-- **User models** (Sec. 3): training one model per dataset and measuring how dataset signatures show up in
-  synthetic conversations, assistant evaluation, cross-dataset generalization, and classifier-guided data
-  selection.
+[#license-gh-package]: LICENSE
+[#arxiv-paper-package]: https://arxiv.org/abs/2610.05534
+<!--- BADGES: END --->
 
-No data, model weights, or results are included. Every script writes under `artifacts/` (set
-`DSIG_ARTIFACTS` to use another location). Run all commands from the repository root.
+Human–LLM conversation datasets shape how we understand AI use and train user models, but how different are the interactions they capture?
+We study seven datasets and find distinctive **dataset signatures**:
+classifiers can identify a conversation's source from user messages alone, well above chance.
+
+![Paper figure](assets/figure_dataset_classification.png)
+
+We examine these signatures in three stages:
+
+- **Dataset classification** (Sec. 2.2): identifying which of seven human–LLM conversation datasets a conversation comes from, using linear probes on frozen language-model representations.
+- **Taxonomy matching** (Sec. 2.3): testing how much of that separability human-designed taxonomies explain.
+- **User models** (Sec. 3): training one model per dataset and measuring how dataset signatures show up in synthetic conversations, assistant evaluation, cross-dataset generalization, and classifier-guided data selection.
+
+Dataset signatures persist even after matching conversations on human-designed taxonomies.
+They also carry over into user-model outputs, with consequences for evaluating user models and the LLM assistants paired with them.
+We further study how dataset classifiers can guide data selection for user-model training.
 
 ## Setup
 
@@ -244,6 +254,26 @@ Finally, run the KL-reduction analysis (Eq. 4, Figure 9):
 python -m src.datamix.kl_reduction
 ```
 
-## Third-party code
+## License
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The code in this repository is released under the [BSD 3-Clause License](LICENSE), except for
+[`userlm_training/llama-cookbook/`](userlm_training/llama-cookbook/), a reduced and modified copy of
+[llama-cookbook](https://github.com/meta-llama/llama-cookbook), which retains its
+[MIT License](userlm_training/llama-cookbook/LICENSE).
+
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details. Datasets and model weights used here
+are subject to their own licenses and terms of use.
+
+## Citation
+
+```bibtex
+@misc{suh2026datasetsignatureshumanllminteractions,
+      title={Dataset Signatures in Human-LLM Interactions and User Modeling},
+      author={Joseph Suh and Serina Chang},
+      year={2026},
+      eprint={2610.05534},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2610.05534},
+}
+```
